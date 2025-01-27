@@ -68,5 +68,53 @@ void addItem(vector<Item>& inventory) {
 	cout << "Enter the item name: ";
 	cout << "Enter quantity: ";
 	cin >> newItem.quantity;
-
+	cout << "Enter price: ";
+	cin >> newItem.price;
+	inventory.push_back(newItem);
+	cout << "Item added successfully\n";
 }
+
+void viewItems(const vector<Item>& inventory) {
+	if (inventory.empty()) {
+		cout << "No items in the inventory.\n";
+	}
+	cout << "\n--- Inventory Items ---\n";
+	cout << "ID\tName\t\tQuantity\tPrice\n";
+	for (const auto& item : inventory) {
+		cout << item.id << "\t" << item.name << "\t\t" << item.quantity << "\t\t$" << item.price << item.price << "\n";
+	}
+}
+
+void searchItem(const vector<Item>& inventory) {
+	int searchId;
+	cout << "Enter the item ID to serach: ";
+	cin >> searchId;
+
+	for (const auto& item : inventory) {
+		if (item.id == searchId) {
+			cout << "Item found:\n";
+			cout << "ID: " << item.id << "\nName: " << item.name << "\nQuantity: " << item.quantity << "\nprice: $" << "\n";
+			return;
+		}
+	}
+	cout << "Item with ID " << searchId << " Not found.\n";
+}
+
+
+void deleteItem(vector<Item>& inventory) {
+	int deleteId;
+	cout << "Enter thei tem ID to delete: ";
+	cin >> deleteId;
+
+
+	for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+		if (it->id == deleteId) {
+			inventory.erase(it);
+			cout << "Item deleted sucessfully.\n";
+			return;
+
+		}
+	}
+	cout << "Item with ID " << deleteId << " not found.\n";
+}
+
