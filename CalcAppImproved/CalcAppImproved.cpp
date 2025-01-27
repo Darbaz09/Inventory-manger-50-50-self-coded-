@@ -118,3 +118,27 @@ void deleteItem(vector<Item>& inventory) {
 	cout << "Item with ID " << deleteId << " not found.\n";
 }
 
+
+void editItem(vector<Item>& inventory) {
+	int editId;
+	cout << "Enter hte item ID to edit: ";
+	cin >> editId;
+
+	for (auto& item : inventory) {
+		if (item.id == editId) {
+			cout << "Editing item:\n";
+			cout << "Current name: " << item.name << "\nEnter new name: ";
+			cin.ignore();
+			getline(cin, item.name);
+
+			cout << "Current quantity: " << item.quantity << "\nEnter new quantity:	";
+			cin >> item.quantity;
+
+			cout << "Current price: $" << item.price << "\nEnter new price: ";
+			cin >> item.price;
+			cout << "Item updated successfully.\n";
+			return;
+		}
+	}
+	cout << "Item with ID " << editId << " not found.\n";
+}
