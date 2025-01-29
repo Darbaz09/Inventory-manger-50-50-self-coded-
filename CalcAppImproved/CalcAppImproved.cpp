@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <windows.h>
 using namespace std;
 
 
@@ -66,6 +67,7 @@ void addItem(vector<Item>& inventory) {
 	getline(cin, newItem.name);
 	cin.ignore();
 	cout << "Enter the item name: ";
+	cin >> newItem.name; 
 	cout << "Enter quantity: ";
 	cin >> newItem.quantity;
 	cout << "Enter price: ";
@@ -79,7 +81,7 @@ void viewItems(const vector<Item>& inventory) {
 		cout << "No items in the inventory.\n";
 	}
 	cout << "\n--- Inventory Items ---\n";
-	cout << "ID\tName\t\tQuantity\tPrice\n";
+	cout << "ID\t\tName\t\tQuantity\tPrice\n";
 	for (const auto& item : inventory) {
 		cout << item.id << "\t" << item.name << "\t\t" << item.quantity << "\t\t$" << item.price << item.price << "\n";
 	}
